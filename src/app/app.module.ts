@@ -12,14 +12,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
 import {HttpClientModule, HttpBackend, HttpClient} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {MultiTranslateHttpLoader} from "ngx-translate-multi-http-loader";
+import {TranslateHttpLoader} from '@ngx-translate/http-loader'
 
-export function HttpLoaderFactory(http: HttpClient): any {
-  return new MultiTranslateHttpLoader(http, [
-      {prefix: "./assets/translate/core/", suffix: ".json"},
-      {prefix: "./assets/translate/shared/" , suffix: ".json" },
-  ]);
-}
+
 
 
 
@@ -59,9 +54,10 @@ const appRoute: Routes =[
             loader: {
                 provide: TranslateLoader,
                 useFactory: HttpLoaderFactory,
-                deps: [HttpBackend]
+                deps: [HttpClient]
             }
         })
+  
     
     
    
@@ -71,6 +67,12 @@ const appRoute: Routes =[
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { } 
+
+  export function HttpLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http,'./assect/i18n/','.json');
+  }
+
+
 
 

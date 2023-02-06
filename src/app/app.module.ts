@@ -69,8 +69,8 @@ const appRoute: Routes =[
 })
 export class AppModule { } 
 
-  export function HttpLoaderFactory(http: HttpClient) {
-    return new TranslateHttpLoader(http,'./assect/i18n/','.json');
+  export function HttpLoaderFactory(http: HttpClient):TranslateHttpLoader {
+    return new TranslateHttpLoader(http);
   }
 
 

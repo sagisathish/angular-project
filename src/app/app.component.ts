@@ -10,24 +10,29 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent   {
   
-  title = 'book-store-with-routing'
+  title  = 'book-store-with-routing'
+  supportlanguages=['en','fr'];
 
-  supportLanguage =['en','fr','hi']
-
-  constructor(private translateService:TranslateService){
-    this.translateService.addLangs(this.supportLanguage);
-    this.translateService.setDefaultLang('en');
-
-    const browserlang =this.translateService.getBrowserLang();
-    //this.translateService.use(browserlang.);
-
+  constructor(private translate: TranslateService) {
+    this.translate.addLangs(this.supportlanguages)
+    this.translate.setDefaultLang('en');
+    // this.translate.use('en');
   }
+  // async function chooseLang(Lang:String) {
+    // this.translate.use(Lang)
+    
+  // }
+
+
+}
+ 
+  
 
   
 
 
   
-  }
+
 
 
     

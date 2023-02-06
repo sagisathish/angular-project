@@ -2,15 +2,21 @@
   <div class="row">
     <div class="col-9"></div>
     <div class="col-3">
-      <select class="custom-select">
-        <option value="en">English</option>
-        <option value="hi">Hindi</option>
-        <option value="de">french</option>
-      </select>
+      
     </div>
   </div>
 </nav>
-
+<p>Select language: 
+  <select>
+(click)="selectLang($event.target.value)">
+   
+  <!-- class="custom-select"> -->
+    <option *ngFor="let item of supportlanguages" >{{item}}</option> 
+    <!-- value="en">English</option> -->
+    <!-- <option value="fr">french</option> -->
+  </select>
+  </p>
+<P>{{'home.title' | translate }}</P>
 
 <div class="main-container">
   <div class="nav-container">
@@ -27,11 +33,13 @@
     <app-contact></app-contact>
     <app-courses></app-courses>
     <app-description></app-description>
-    <app-home></app-home> --->
+    <app-home></app-home> ---> 
     
     <router-outlet></router-outlet>
   </div>
 </div>
+
+
 
 
    
